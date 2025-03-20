@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const HomePart3 = () => {
@@ -23,14 +22,10 @@ const HomePart3 = () => {
 
       <div className="max-w-4xl mx-auto">
         <Swiper
-          modules={[Autoplay, Navigation]}
+          modules={[Autoplay, Pagination]}
           spaceBetween={20}
           slidesPerView={5} // Default for larger screens (desktop)
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          navigation={{
-            prevEl: '.swiper-button-prev',
-            nextEl: '.swiper-button-next',
-          }}
           pagination={{ clickable: true }}
           loop={true}
           breakpoints={{
@@ -49,9 +44,6 @@ const HomePart3 = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* Navigation Buttons (visible only on mobile) */}
-        <div className="swiper-button-prev md:hidden"></div>
-        <div className="swiper-button-next md:hidden"></div>
       </div>
     </div>
   );
