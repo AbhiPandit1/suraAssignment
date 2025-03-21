@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
-import { IoMenu, IoPersonOutline } from 'react-icons/io5';
+import { IoMenu, IoPersonOutline, IoLogOutOutline } from 'react-icons/io5';
 import Logo from './Logo';
 import Nav from './Nav';
 import PersonalButton from '../Button/PersonalButton';
 import MobileHeader from './MobileHeader';
 import CustomCursor from '../ContextFunctions/CustomCursor';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../ContextFunctions/AuthContext';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { token, loading, logout } = useAuth(); // Access token and logout function from context
+  const navigate = useNavigate();
+
+  // Handle logout
+  const handleLogout = () => {
+    logout(); // Use logout function from context
+    navigate('/login'); // Redirect to login page
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state if context is still loading
+  }
 
   return (
     <header className="flex items-center justify-between h-20 px-6 md:px-20 bg-white relative">
@@ -26,21 +39,39 @@ const Header = () => {
       <div className="flex items-center gap-4">
         {/* Buttons - Visible on All Screens */}
         <div className="flex gap-2">
-          <Link
-            to="/login"
-            className="hover:text-green-600 transition duration-200"
-          >
-            <PersonalButton
-              text="Login"
-              bgColor="#D3D3D3"
-              hoverColor="#0A0A0A"
-              textColor="#000"
-              hoverTextColor="#fff"
-              icon={IoPersonOutline} // 🔥 Added Icon
-              iconColor="#000"
-              hoverIconColor="#fff"
-            />
-          </Link>
+          {token ? (
+            <button
+              onClick={handleLogout}
+              className="hover:text-red-600 transition duration-200"
+            >
+              <PersonalButton
+                text="Sign Out"
+                bgColor="#D3D3D3"
+                hoverColor="#0A0A0A"
+                textColor="#000"
+                hoverTextColor="#fff"
+                icon={IoLogOutOutline} // 🔥 Logout Icon
+                iconColor="#000"
+                hoverIconColor="#fff"
+              />
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="hover:text-green-600 transition duration-200"
+            >
+              <PersonalButton
+                text="Login"
+                bgColor="#D3D3D3"
+                hoverColor="#0A0A0A"
+                textColor="#000"
+                hoverTextColor="#fff"
+                icon={IoPersonOutline} // 🔥 Login Icon
+                iconColor="#000"
+                hoverIconColor="#fff"
+              />
+            </Link>
+          )}
           <PersonalButton
             text="Get Started"
             bgColor="#16a34a"
