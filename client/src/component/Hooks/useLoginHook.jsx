@@ -8,6 +8,7 @@ const useLoginHook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth(); // Access the login function from the context
+  const backend = import.meta.env.VITE_BACKEND_URL; // Get the backend URL from environment variables
 
   const loginUser = async (formData) => {
     setError(null);
@@ -15,7 +16,7 @@ const useLoginHook = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:4000/api/login', {
+      const response = await fetch(`${backend}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

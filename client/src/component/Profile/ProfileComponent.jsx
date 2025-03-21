@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useProfile from '../Hooks/useProfileHook';
+import { ClipLoader } from 'react-spinners'; // Importing the spinner component
 
 const ProfileComponent = () => {
   const { profile, loading, error, updateProfile } = useProfile();
@@ -64,7 +65,14 @@ const ProfileComponent = () => {
     setIsChangingPassword(!isChangingPassword); // Toggle password change form
   };
 
-  if (loading) return <p className="text-center text-gray-600">Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen py-10">
+        <ClipLoader color="#4CAF50" size={50} />
+      </div>
+    ); // Show spinner while loading
+  }
+
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (

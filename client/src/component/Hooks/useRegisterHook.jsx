@@ -8,6 +8,7 @@ const useRegisterHook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+  const backend = import.meta.env.VITE_BACKEND_URL; // Get the backend URL from environment variables
 
   const registerUser = async (formData) => {
     setError(null);
@@ -15,11 +16,10 @@ const useRegisterHook = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`http://localhost:4000/api/register`, {
+      const response = await fetch(`${backend}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-        
       });
 
       const data = await response.json();

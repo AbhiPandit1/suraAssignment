@@ -7,13 +7,13 @@ const useProfile = () => {
   const [loading, setLoading] = useState(true); // Renamed to avoid conflict
   const [error, setError] = useState(null);
   const { token } = useAuth(); // Get token from context
-  console.log(token);
+  const backend = import.meta.env.VITE_BACKEND_URL; // Access the VITE_BACKEND_URL from environment variables
 
   // Fetch Profile Data
   const fetchProfile = async () => {
     if (!token) return; // Avoid API call if no token is available
     try {
-      const response = await axios.get('http://localhost:4000/api/profile', {
+      const response = await axios.get(`${backend}/api/profile`, {
         headers: {
           Authorization: `Bearer ${token}`, // Send the token as Bearer in Authorization header
         },
@@ -31,7 +31,7 @@ const useProfile = () => {
     if (!token) return { success: false, message: 'No token found' }; // Handle no token case
     try {
       const response = await axios.put(
-        'http://localhost:4000/api/profile/update',
+        `${backend}/api/profile/update`,
         updatedProfile,
         {
           headers: {
