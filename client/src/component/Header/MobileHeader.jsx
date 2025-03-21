@@ -9,7 +9,7 @@ const mobileNavLinks = [
   { name: 'Features', path: '/features' },
   { name: 'Pricing', path: '/pricing' },
   { name: 'How It Works', path: '/how-it-works' },
-  { name: 'About', path: '/about' },
+  { name: 'Profile', path: '/profile' },
   { name: 'Contact', path: '/contact' },
 ];
 

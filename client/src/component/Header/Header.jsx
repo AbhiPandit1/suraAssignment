@@ -5,6 +5,7 @@ import Nav from './Nav';
 import PersonalButton from '../Button/PersonalButton';
 import MobileHeader from './MobileHeader';
 import CustomCursor from '../ContextFunctions/CustomCursor';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,16 +26,21 @@ const Header = () => {
       <div className="flex items-center gap-4">
         {/* Buttons - Visible on All Screens */}
         <div className="flex gap-2">
-          <PersonalButton
-            text="Login"
-            bgColor="#D3D3D3"
-            hoverColor="#0A0A0A"
-            textColor="#000"
-            hoverTextColor="#fff"
-            icon={IoPersonOutline} // 🔥 Added Icon
-            iconColor="#000"
-            hoverIconColor="#fff"
-          />
+          <Link
+            to="/login"
+            className="hover:text-green-600 transition duration-200"
+          >
+            <PersonalButton
+              text="Login"
+              bgColor="#D3D3D3"
+              hoverColor="#0A0A0A"
+              textColor="#000"
+              hoverTextColor="#fff"
+              icon={IoPersonOutline} // 🔥 Added Icon
+              iconColor="#000"
+              hoverIconColor="#fff"
+            />
+          </Link>
           <PersonalButton
             text="Get Started"
             bgColor="#16a34a"

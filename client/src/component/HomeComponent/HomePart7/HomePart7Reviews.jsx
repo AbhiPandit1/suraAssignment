@@ -10,7 +10,7 @@ const HomePart7Reviews = () => {
       id: '1',
       img: 'https://crm-zenix.keystonedemo.com/wp-content/uploads/2024/10/6.png',
       reviewText:
-        'Zenix has exceeded our expectations in every way. From its seamless integration with our existing tools to its robust reporting capabilities, it has become an indispensable asset.',
+        'Zenix has exceeded our expectations in every way. From its seamless integration with our existing tools to its robust reporting capabilities.',
       name: 'Maya',
       designation: 'Designer',
     },
@@ -39,17 +39,28 @@ const HomePart7Reviews = () => {
       designation: 'Marketing Head',
     },
   ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalReviews = reviewData.length;
+
   const settings = {
-    dots: false, // Removed dots
+    dots: false,
     infinite: true,
-    speed: 600, // Smooth transition
-    slidesToShow: 3, // Showing 2 slides for better layout
+    speed: 600,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
     beforeChange: (oldIndex, newIndex) => setCurrentIndex(newIndex),
     responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
       {
         breakpoint: 768,
         settings: {
@@ -60,30 +71,15 @@ const HomePart7Reviews = () => {
     ],
   };
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalReviews = reviewData.length;
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? totalReviews - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === totalReviews - 1 ? 0 : prev + 1));
-  };
-
   return (
-    <div className="bg-white  py-10 px-5">
+    <div className="bg-white py-10 px-5">
       <div className="max-w-5xl mx-auto relative">
-        {/* Slider */}
         <Slider {...settings}>
           {reviewData.map((review) => (
-            <div key={review.id} className="px-2  gap-12 text-start">
-              <div
-                className="bg-[rgb(244,244,244)] p-10 rounded-lg shadow-lg text-start"
-                style={{ height: '480px' }} // Increased height
-              >
+            <div key={review.id} className="p-6">
+              <div className="bg-gray-100 py-12 px-6 rounded-xl shadow-lg text-start flex flex-col items-center sm:items-start">
                 {/* Image */}
-                <div className="w-24 h-24  rounded-full overflow-hidden">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden mb-4">
                   <img
                     src={review.img}
                     alt={review.name}
@@ -91,15 +87,15 @@ const HomePart7Reviews = () => {
                   />
                 </div>
                 {/* Review Text */}
-                <p className="mt-4 text-gray-600 italic">
+                <p className="text-gray-600 italic text-sm sm:text-base text-center sm:text-left">
                   "{review.reviewText}"
                 </p>
                 {/* Name & Designation */}
-                <div className='mt-15'>
-                  <h3 className="mt-3 text-lg font-semibold text-gray-900">
+                <div className="mt-4 text-center sm:text-left">
+                  <h3 className="text-lg font-semibold text-gray-900 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[150px] sm:max-w-none">
                     {review.name}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-4">{review.designation}</p>
+                  <p className="text-sm text-gray-500">{review.designation}</p>
                 </div>
               </div>
             </div>
@@ -107,12 +103,12 @@ const HomePart7Reviews = () => {
         </Slider>
 
         {/* Bottom Indicator */}
-        <div className="mt-5 p-4 sm:px-32 flex items-center justify-between text-gray-600 text-sm">
-          <span className="ml-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800">
+        <div className="mt-5 flex items-center justify-center gap-4 w-[60%] mx-auto">
+          <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 text-sm">
             {currentIndex + 1}
           </span>
-          <div className="flex-grow border-t border-gray-400 mx-4"></div>
-          <span className="mr-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800">
+          <div className="flex-grow border-t border-gray-400"></div>
+          <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 text-sm">
             {totalReviews}
           </span>
         </div>

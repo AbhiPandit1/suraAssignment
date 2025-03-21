@@ -6,12 +6,12 @@ const HomePart7 = () => {
     <div className="bg-white py-16 px-6 sm:px-10">
       <div className="max-w-5xl mx-auto">
         {/* Badge */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 py-1 w-max text-[#00CC61] bg-[#E6F9EE] rounded-full text-sm font-medium mb-6 shadow-md">
-          Reviews
+        <div className="inline-flex items-center px-4 mx-6 py-1 text-[#00CC61] bg-[#E6F9EE] rounded-full text-sm font-medium mb-2">
+          <span>Reviews</span>
         </div>
 
         {/* Review Heading & CTA */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full bg-white px-8 py-8 rounded-xl ">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full bg-white px-8 py-2 rounded-xl">
           {/* Heading & Description */}
           <div className="sm:w-3/4 w-full">
             <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
@@ -24,7 +24,7 @@ const HomePart7 = () => {
           </div>
 
           {/* Button */}
-          <div className="mt-5 sm:mt-0 sm:w-auto w-full flex sm:justify-end">
+          <div className="mt-2 sm:mt-0 sm:w-auto w-full flex sm:justify-end">
             <PersonalButton
               text="View all reviews"
               bgColor="#00CC61"
@@ -39,7 +39,7 @@ const HomePart7 = () => {
       </div>
 
       {/* Review Section */}
-      <div className="mt-12">
+      <div className="mt-6">
         <HomePart7Reviews />
       </div>
     </div>

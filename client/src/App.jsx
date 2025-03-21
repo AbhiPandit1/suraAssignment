@@ -5,6 +5,10 @@ import Header from './component/Header/Header';
 import Home from './pages/Home/Home';
 import Footer from './component/Footer/Footer';
 import Pricing from './pages/Pricing/Pricing';
+import Features from './pages/Features/Features';
+import SignIn from './pages/Signin/SignIn';
+import Profile from './pages/Profile/Profile';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -21,6 +25,19 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/pricing" element={<Pricing />} />
+          </Routes>
+          <Routes>
+            <Route path="/features" element={<Features />} />
+          </Routes>
+
+          <Routes>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          <Routes>
+            <Route path="/signin" element={<SignIn />} />
+          </Routes>
+          <Routes>
+            <Route path="/profile" element={<Profile />} />
           </Routes>
 
           {/* Footer */}
