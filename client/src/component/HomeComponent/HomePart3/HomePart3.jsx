@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules'; // Removed Pagination import
 
 import 'swiper/css';
-import 'swiper/css/pagination';
 
 const HomePart3 = () => {
   const slides = [
@@ -22,11 +21,10 @@ const HomePart3 = () => {
 
       <div className="max-w-4xl mx-auto">
         <Swiper
-          modules={[Autoplay, Pagination]}
+          modules={[Autoplay]} // Removed Pagination module
           spaceBetween={20}
           slidesPerView={5} // Default for larger screens (desktop)
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
           loop={true}
           breakpoints={{
             640: { slidesPerView: 3 }, // 3 images on mobile

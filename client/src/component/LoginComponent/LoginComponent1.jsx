@@ -8,7 +8,7 @@ const LoginComponent1 = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
-  console.log(formData)
+  console.log(formData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,7 +55,7 @@ const LoginComponent1 = () => {
           {/* Username/Email */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-medium mb-1">
-              Username or Email Address <span className="text-red-500">*</span>
+              Email Address <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
